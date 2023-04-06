@@ -1,9 +1,6 @@
 package com.example.library.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/student")
@@ -68,5 +65,38 @@ public class StudentController {
         int sum = num1 + num2 + num3 + num4;
         return sum;
 
+    }
+
+
+    // post API for all
+    @PostMapping("/add-student")
+    public String newAdmission(@RequestParam("student-name") String StudentName) {
+        String message = "Hi " + StudentName + " Welcome to our new batch";
+        return message;
+    }
+
+    @PostMapping("/print-hi")
+    public String sayHi() {
+        return "hi Guys, How are you?";
+    }
+
+    @PostMapping("/hey-user")
+    public String greetings(@RequestParam("new-user1") String userName1, @RequestParam("new-user2") String userName2, @RequestParam("new-user3") String userName3) {
+
+        String output = "Hi " + userName1 + userName2 + userName3 + " you are welcome to our new task";
+        return output;
+
+    }
+
+    @PostMapping("/multi-2-numbers")
+    public int multiply(@RequestParam Integer num1, @RequestParam Integer num2) {
+        int multi = num1 * num2;
+        return multi;
+    }
+
+    @PostMapping("/multi-4-numbers")
+    public int longMulti(@RequestParam Integer num1, @RequestParam Integer num2, @RequestParam Integer num3, @RequestParam Integer num4) {
+        int answer = num1 * num2 * num3 * num4;
+        return answer;
     }
 }
